@@ -1,0 +1,79 @@
+<div class="auth__wrapper">
+    <div class="container">
+        <div class="row form__container">
+            <div class="col-md-12 login-form" *ngIf="formToggler">
+<!-- login -->
+                <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+                    <div class="mb-3 form-header">
+                        <p>Login</p>
+                    </div>
+                    <div class="mb-3 text-center icons">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-google"></i>
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <div class="mb3">
+                        <p>Or Use Your Email</p>
+                    </div>
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email address</label>
+                      <input type="email" class="form-control" id="email" name="email" ngModel #email="ngModel" required email>
+                      <p *ngIf="email.invalid && (email.touched || email.dirty)"> Please enter a valid email.</p>
+                    </div>
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="password" name="password" ngModel #password="ngModel" required>
+                      <p *ngIf="password.invalid && (password.touched || password.dirty)"> Please enter a valid password.</p>
+
+                    </div>
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+                    </div>
+
+                    
+                    <button type="submit" class="btn btn-primary">Login</button><span> Don't Have an Account? <a (click)="changeToSignup()">SignUp</a> </span>
+                  </form>
+            </div>
+
+<!-- SignUp -->
+            <div class="col-md-12 signup-form" *ngIf="!formToggler">
+                <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
+                    <div class="mb-3 form-header">
+                        <p>Sign-up</p>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fname" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="fname" name="fname" ngModel #fname="ngModel" required>
+
+                    </div>
+                    <div class="mb-3">
+                    <label for="lname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lname" name="lname" ngModel #lname="ngModel" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email address</label>
+                      <input type="email" class="form-control" id="email" name="email" ngModel #email="ngModel" required email>
+                      <p *ngIf="email.invalid && (email.touched || email.dirty)"> Please enter a valid email.</p>
+
+                    </div>
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="password" name="password" ngModel #password="ngModel" required>
+                      <p *ngIf="password.invalid && (password.touched || password.dirty)"> Please enter a valid password.</p>
+
+                    </div>
+                    <!-- <div class="mb-3">
+                        <label for="cpassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="cpassword" name="cpassword" ngModel #cpassword="ngModel" required>
+                        <p *ngIf="cpassword.invalid && (cpassword.touched || cpassword.dirty)"> Passwords Don't Match! </p>
+
+                    </div> -->
+
+                    
+                    <button type="submit" class="btn btn-primary">Signup</button><span> Already Have an Account? <a (click)="changeToLogin()">Login</a> </span>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>

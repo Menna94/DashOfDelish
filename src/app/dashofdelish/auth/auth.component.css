@@ -1,0 +1,27 @@
+.auth__wrapper{
+    /* background-color:aquamarine; */
+    margin: 150px auto;
+    width: 30%;
+
+}
+.form-header{
+    font-size: 34px;
+    text-align: center;
+}
+/* .auth__wrapper .icons{ */
+    /* background-color: greenyellow;
+} */
+.auth__wrapper .icons i{
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+.login-form{
+    height: 100%;
+
+}
+
+.form__container{
+    padding: 20% 10%;
+    background-color: greenyellow;
+}

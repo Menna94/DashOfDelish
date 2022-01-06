@@ -1,0 +1,116 @@
+/*---- FORM ----*/
+.recipe-form_container{
+    margin: 100px auto;
+    /* background-color: bisque; */
+    width: 70%
+}
+.recipe-form_container input:not(.recipe-specifications_container input),
+.recipe-form_container textarea
+{
+    width:90%;
+}
+
+.button-group{
+    text-align: center;
+}
+.button-group button{
+    margin-left: 10px;
+}
+/*---- END FORM ----*/
+
+
+/*---- INTRO ----*/
+.introForm{
+    margin: 200px auto;
+}
+.introForm label{
+    display: inline-block;
+}
+.introForm input{
+    display: inline-block;
+}
+
+.img-uploader{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    /* background-color: transparent; */
+    background-color: black;
+    opacity: .5;
+    z-index: 1;
+}
+
+.img-uploader .img-uploader-button{
+    text-align: center;
+    background-color:white;
+    width: max-content;
+    /* position: relative; */
+
+
+}
+.img-uploader-button button{
+    color: black !important;
+    z-index: 10;
+}
+.img-uploader-button input[type="file"]{
+    display: none;
+
+}
+.img-preview{
+    height: 100%;
+    background-color: blueviolet;
+    /* position: absolute; */
+    opacity: 1;
+    z-index: 2;
+}
+.img-preview img{
+    height: 100%;
+    /* width: 100%; */
+}
+
+/*---- END INTRO ----*/
+
+
+
+/*---- DETAILS ----*/
+.recipe-details__container{
+    /* background-color: blueviolet; */
+    margin: 200px auto;
+}
+.recipe-specifications_container{
+    /* background-color: aqua; */
+    height: 100%;
+}
+.recipe-specifications_container input{
+    display: inline-block;
+    margin-right: 0px;
+}
+/*---- END DETAILS ----*/
+
+
+
+/*---- INGREDIENTS ----*/
+.ingredients__container{
+    /* text-align: center; */
+    margin: 50px auto;
+    background-color: burlywood;
+    margin: 100px auto;
+}
+
+.ingredients__header{
+    margin: 20px auto;
+}
+/*---- END INGREDIENTS ----*/
+
+
+
+/*---- DIRECTIONS ----*/
+.directions__container{
+    margin: 100px auto;
+    background-color: cadetblue;
+}
+/*---- END DIRECTIONS ----*/
+
+

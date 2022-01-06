@@ -1,0 +1,41 @@
+<div class="recipes-list__wrapper">
+    <div class="recipes-list__cotainer container">
+<!-- Recipes -->
+        <div class="recipe-list" *ngIf="recipes.length > 0">
+            <div class="row card__container">
+                <div class="card col-md-3" *ngFor="let recipe of recipes">
+                    
+                    <div class="img__container">
+                        <img [src]="recipe.recipeImg" class="card-img-top" [alt]="recipe.recipeName">
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="card-title__container">
+                            <p class="card-title">{{ recipe.recipeName }}</p>
+                        </div>
+                      <div class="card-text__container">
+                        <p class="card-text">{{ recipe.briefIntro}}</p>
+                            <a [routerLink]="['recipe', recipe.id]" > read more...</a>
+                        
+                      </div>
+                    </div>
+
+                        
+
+                    <div class="card-footer" *ngIf="userIsAuth">
+                        <a class="fas fa-edit" [routerLink]="['recipes','recipe-update', recipe.id]" ></a>
+                        <a class="fas fa-trash" (click)="onDelete(recipe.id)"></a> 
+                    </div>
+                    <div class="card-footer text-muted" *ngIf="!userIsAuth">
+                        2 days ago
+                      </div>
+                </div>
+            </div>
+        </div>
+
+<!-- No Recipes -->
+        <div class="no-recipe-list" *ngIf="recipes.length <= 0">
+            <p class="text-center">No Recipes Found!</p>
+        </div>
+    </div>
+</div>
