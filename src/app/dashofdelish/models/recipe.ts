@@ -10,6 +10,6 @@ export interface Recipe {
     briefIntro: string,
     history?: string,
     nutritionInfo?:string,
-    // ingredients: string[],
+    ingredients?: [{name:string, amount:number}],
     // steps: string[]
 }

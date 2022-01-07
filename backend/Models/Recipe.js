@@ -1,5 +1,18 @@
 const mongoose = require('mongoose');
 
+
+const ingredientsSubSchema = new mongoose.Schema({
+    name:{
+        type:String,
+        // required: true
+    },
+    amount: {
+        type:Number,
+        // required: true
+    }
+})
+
+
 const recipeSchema = new mongoose.Schema({
     recipeName: {
         type:String,
@@ -7,7 +20,7 @@ const recipeSchema = new mongoose.Schema({
     },
     recipeImg:{
         type:String,
-        required: true
+        // required: true
     },
 
     servings: {
@@ -27,15 +40,15 @@ const recipeSchema = new mongoose.Schema({
     
     history: String,
     nutritionInfo:String,
-    // ingredients: {
-    //     type:String,
-    //     required: true
-    // },
+    ingredients: [ingredientsSubSchema],
     // steps: {
     //     type:String,
     //     required: true
     // },
+},{
+    timestamps:true
 })
+
 
 const Recipe = mongoose.model('Recipe', recipeSchema);
 module.exports = Recipe

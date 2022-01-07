@@ -18,7 +18,8 @@ import { RecipeListComponent } from './dashofdelish/recipes/recipe-list/recipe-l
 import { ProfileComponent } from './dashofdelish/user/profile/profile.component';
 import { RecipeService } from './dashofdelish/services/recipe.service';
 import { RecipesComponent } from './dashofdelish/recipes/recipes.component';
-
+//
+import {Ng2PageScrollModule} from 'ng2-page-scroll';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import { RecipesComponent } from './dashofdelish/recipes/recipes.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2PageScrollModule
   ],
   providers: [
     RecipeService,

@@ -1,9 +1,11 @@
 //DOTENV
-require('dotenv').config()
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, './.env')})
+
 //IMPORTS 
 const express = require('express');
 const app = express();
-const path = require('path');
+// const path = require('path');
 //Routes
 const RecipeRoutes = require('./Routes/recipe.routes');
 const AuthRoutes= require('./Routes/auth.routes');
@@ -31,7 +33,7 @@ app.use((req,res,next)=>{
     )
     next()
 })
-
+console.log(process.env.ENV_TEST);
 
 //mount routers
 app.use("/api/recipes", RecipeRoutes)

@@ -22,8 +22,10 @@ const routes: Routes = [
       {path:'recipe-create', component:RecipeCreateComponent, canActivate:[AuthGuard]},
       //http://localhost:4200/recipes/recipe-update
       {path:'recipe-update/:id', component:RecipeCreateComponent, canActivate:[AuthGuard]},
-        //http://localhost:4200/recipes/recipe-list  --> Visitor View
+      //http://localhost:4200/recipes/recipe-list  --> Visitor View
       {path:'reicpe-list', component:RecipeListComponent},
+      //http://localhost:4200/recipes/:id 
+      {path:':id', component:RecipeListComponent},
     ]
   },
   {//http://localhost:4200/user

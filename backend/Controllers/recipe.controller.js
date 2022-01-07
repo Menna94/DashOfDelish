@@ -93,6 +93,7 @@ exports.getRecipes = async (req,res,next) =>{
 exports.createRecipe = async (req,res,next) =>{
     try{
         const url = `${req.protocol}://${req.get('host')}`; 
+
         const {
             servings, 
             prepTime,
@@ -100,9 +101,9 @@ exports.createRecipe = async (req,res,next) =>{
             totalTiming, 
             recipeName, 
             briefIntro,
-            recipeImg, 
             history,
-            nutritionInfo
+            nutritionInfo,
+            ingredients
         } = req.body;
 
         const recipe = await new Recipe({
@@ -112,9 +113,10 @@ exports.createRecipe = async (req,res,next) =>{
             totalTiming,
             recipeName,
             briefIntro,
-            recipeImg: `${url}/images/${req.file.filename}`,
+            recipeImg:`${url}/images/${req.file.filename}`,
             history,
-            nutritionInfo
+            nutritionInfo,
+            ingredients
         })
         recipe.save();
 
@@ -172,7 +174,7 @@ exports.updateRecipe = async (req,res,next)=>{
             })   
         }
         res.status(200).send({
-            success:false,
+            success:true,
             messgae: 'Recipe Updated Successfully!',
             data: recipe
         }) 

@@ -32,7 +32,7 @@
                     </div>
 
                     <!-- user Name -->
-                    <div class="mb-3">
+                    <div class="mb-3" *ngIf="!editMode">
                         <label for="userName" class="form-label">By</label>
                         <input type="text" class="form-control" id="userName">
                         <p class="form-text">Tips: Make it descriptive, captivating and accurate</p>
@@ -41,14 +41,12 @@
 
                     <!-- Created At -->
                     <div class="mb-3">
-                        <label for="createdAt" class="form-label">Date</label>
-                        <input type="text" class="form-control" id="createdAt">
-                        <p class="form-text">Tips: Make it descriptive, captivating and accurate</p>
-                        <!-- <p *ngIf="recipeName.invalid && (recipeName.touched || recipeName.dirty)"> Please Add a Name to Your Recipe </p> -->
+                        <label for="createdAt" class="form-label">Created at</label>
+                        <input type="text" class="form-control" id="createdAt" [value]="date | date:'MMMM dd,yyyy'" readonly> 
                     </div>
 
                     <!-- Rate -->
-                    <div class="mb-3">
+                    <div class="mb-3" *ngIf="!editMode">
                         <p>Rate: </p> <i class="fas fa-star"></i>
                     </div>
                 </div>
@@ -109,7 +107,7 @@
                                 </tr>
                             </table>
                             <div class="nutrition-facts-pointer text-center">
-                                <a>Nutrition Facts</a>
+                                <a pageScroll href="#nutritionInfo">Nutrition Facts</a>
                             </div>
                         </div>
                     </div>
@@ -125,14 +123,13 @@
                     <h3>Ingredients</h3>
                 </div>
                 <div class="row ingredients__contents">
-                    <div class="col-md-12">
-                        <!--  *ngFor="let ingredientCtrl of controls; let i=index;" [formGroupName]="i" -->
-                        <div class="row mb-3">
+                    <div class="col-md-12" formArrayName="ingredients">
+                        <div class="row mb-3" *ngFor="let ingredient of ingredControl; let i=index;" [formGroupName]="i">
                             <div class="col-xs-8 col-md-8">
-                                <input type="text" class="form-control" placeholder="Ingredient">
+                                <input type="text" class="form-control" placeholder="Ingredient" formControlName="name">
                             </div>
                             <div class="col-xs-2 col-md-3">
-                                <input type="text" class="form-control" placeholder="Amount">
+                                <input type="text" class="form-control" placeholder="Amount" formControlName="amount">
                             </div>
                             <div class="col-xs-1 col-md-1">
                                 <button class="btn btn-danger">
@@ -145,7 +142,7 @@
 
                 <div class="row mb-5">
                     <div class="col-md-12">
-                        <button class="btn btn-primary" (click)="onAddIngredient()"> Add Ingredient
+                        <button class="btn btn-primary" type="button" (click)="onAddIngredient()"> Add Ingredient
                         </button>
                     </div>
                 </div>

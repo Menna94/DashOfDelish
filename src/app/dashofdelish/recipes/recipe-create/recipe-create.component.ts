@@ -16,7 +16,7 @@ export class RecipeCreateComponent implements OnInit {
   recipeId : string;
   recipe:Recipe;
   imgPreview:string;
-
+  date:any;
 
   constructor(
     private _route:ActivatedRoute,
@@ -53,7 +53,8 @@ export class RecipeCreateComponent implements OnInit {
     let nutritionInfo='';
     let briefIntro = '';
     let history = '';
-    // let ingredients = new FormArray([]);
+    let createdAt = '';
+    let ingredients = new FormArray([]);
     // let steps = new FormArray([]);
 
     // In Edit Mode:-
@@ -63,6 +64,7 @@ export class RecipeCreateComponent implements OnInit {
       .subscribe(
         recipeData=>{          
           this.recipeForm.patchValue(recipeData.data)      
+          this.date = recipeData.data.createdAt;
 
         }
         
@@ -103,6 +105,7 @@ export class RecipeCreateComponent implements OnInit {
         validators: [Validators.required],
         asyncValidators: [mimeType]
       }),
+      'createdAt': new FormControl(createdAt),
       'servings': new FormControl(servings, Validators.required),
       'prepTime': new FormControl(prepTime),
       'cookingTime': new FormControl(cookingTime),
@@ -110,7 +113,7 @@ export class RecipeCreateComponent implements OnInit {
       'briefIntro': new FormControl(briefIntro),
       'history': new FormControl(history),
       'nutritionInfo':new FormControl(nutritionInfo),
-      // 'ingredients': ingredients,
+      'ingredients': ingredients,
       // 'steps': steps
     })
 
@@ -127,6 +130,8 @@ export class RecipeCreateComponent implements OnInit {
         // this._recipeService.updateRecipe(this.recipeId,this.recipeForm.value)
       }
       else{
+        console.log(this.recipeForm.value);
+        
         this._recipeService.addRecipe(this.recipeForm.value, this.recipeForm.value.recipeImg)
       }
 
@@ -176,8 +181,8 @@ export class RecipeCreateComponent implements OnInit {
     reader.readAsDataURL(file);
   }
   //getters
-  // get controls(){
-  //   return (<FormArray>this.recipeForm.get('ingredients')).controls;
-  // }
+  get ingredControl(){
+    return (<FormArray>this.recipeForm.get('ingredients')).controls;
+  }
 
 }

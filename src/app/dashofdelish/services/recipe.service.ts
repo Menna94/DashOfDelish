@@ -65,11 +65,21 @@ export class RecipeService{
         recipeData.append('briefIntro', recipe.briefIntro);
         recipeData.append('history', recipe.history);
         recipeData.append('nutritionInfo', recipe.nutritionInfo);
+        // recipeData.append('ingredients', JSON.stringify(recipe.ingredients))
+        const ingredients = recipe.ingredients;
+        ingredients.forEach(i=>{
+            recipeData.append('ingredients[]', JSON.stringify(i))
+        })
+        
+
+        // console.log(recipeData);
+        
+        
 
 
         this._http.post<{recipeId:string, data:Recipe}>('http://localhost:3000/api/recipes', recipeData)
         .subscribe(resData=>{
-            // console.log(resData);
+            console.log(resData);
             
             const newRecipe:Recipe = {
                 id: resData.data.id,
@@ -82,6 +92,8 @@ export class RecipeService{
                 briefIntro: resData.data.briefIntro,
                 history: resData.data.history,
                 nutritionInfo: resData.data.nutritionInfo,
+                ingredients:resData.data.ingredients
+                
             };
 
             this.recipes.push(newRecipe);
