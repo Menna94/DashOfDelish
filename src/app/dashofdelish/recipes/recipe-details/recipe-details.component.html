@@ -1,0 +1,160 @@
+<div class="recipe-details__wrapper">
+    <!---- Intro Section ---->
+    <div class="row">
+        <div class="col-md-7 ">
+            <!-- <div class="img__container"> -->
+            <!-- Recipe Img -->
+            <!-- <div class="img-uploader"
+                        [ngStyle]="{'opacity':(imgPreview)?1:.5, 'background-color': (imgPreview)?'transparent':'black'}">
+                        <div class="img-uploader-button">
+                            <button type="button" class="btn" (click)="filePicker.click()">
+                                <i class="fas fa-upload"></i> Upload Image
+                            </button>
+                            <input type="file" #filePicker (change)="onImagePicked($event)">
+                        </div>
+                        <div class="img-preview"
+                            *ngIf="imgPreview !== '' && imgPreview && recipeForm.get('recipeImg').valid">
+                            <img [src]="imgPreview" [alt]="recipeForm.value.recipeName">
+                        </div>
+                    </div> -->
+
+            <!-- </div> -->
+        </div>
+
+        <div class="col-md-4 offset-1">
+            <!-- Recipe Name -->
+            <div class="mb-3">
+                <h1>{{ recipe.recipeName }}</h1>
+            </div>
+
+            <!-- user Name -->
+            <div class="mb-3">
+                <label for="userName" class="form-label">By</label>
+                {{ recipe.id }}
+            </div>
+
+            <!-- Created At -->
+            <div class="mb-3">
+                <label for="createdAt" class="form-label">Created at</label>
+                {{ recipe.createdAt | date:'MMMM dd,yyyy' }}
+            </div>
+
+            <!-- Rate -->
+            <div class="mb-3">
+                <p>Rate: </p> <i class="fas fa-star"></i>
+            </div>
+        </div>
+    </div>
+    <!---- End Intro Section ---->
+
+    <!---- Recipe Details Section ---->
+    <div class="recipe-details__container container">
+        <div class="row">
+            <div class="col-md-7">
+                <!-- Recipe Details Section -->
+                <div class="recipe-description__container">
+                    <!-- Recipe Short Description -->
+                    <div class="mb-3">
+                        <label for="recipeShortDescription" class="form-label">Brief Intro</label>
+                        <p> {{ recipe.briefIntro }} </p>
+                    </div>
+
+                    <!-- Recipe Brief History -->
+                    <div class="mb-3">
+                        <label for="recipeHistory">Recipe History</label>
+                        <p> {{recipe.history}} </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe Specifications Section-->
+            <div class="col-md-4 offset-1">
+                <div class="mb-3" class="recipe-specifications_container">
+                    <div class="mb-3 recipe-specifications_header">
+                        <p> Recipe Specifications </p>
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <td>Prep Time</td>
+                            <td>{{ recipe.prepTime }}</td>
+                        </tr>
+                        <tr>
+                            <td>Cooking Time</td>
+                            <td> {{ recipe.cookingTime }} </td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td> {{ recipe.totalTiming }} </td>
+                        </tr>
+                        <tr>
+                            <td>Servings</td>
+                            <td> {{ recipe.servings }} </td>
+                        </tr>
+                    </table>
+                    <div class="nutrition-facts-pointer text-center">
+                        <a pageScroll href="#nutritionInfo">Nutrition Facts</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Recipe Specifications Section-->
+        </div>
+    </div>
+    <!---- End Recipe Details Section ---->
+
+
+    <!---- Ingredients Section ---->
+    <div class="recipe__container container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="directions__header text-center">
+                    <h3>Directions</h3>
+                </div>
+                <div class="row ingredients__contents">
+                    <div class="col-md-6">
+                        <table class="table table-striped">
+                            <tr *ngFor="let step of recipe.directions">
+                                <td> {{ step.step }} </td>
+                                <td> {{ step.stepTitle }} </td>
+                                <td>
+                                    <textarea> {{ step.stepDetails }} </textarea>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 offset-1">
+                <div class="ingredients__header text-center">
+                    <h3>Ingredients</h3>
+                </div>
+                <div class="row ingredients__contents">
+                    <div class="col-md-6">
+                        <table class="table table-striped">
+                            <tr *ngFor="let ingredient of recipe.ingredients">
+                                <td> {{ ingredient.name }} </td>
+                                <td> {{ ingredient.amount }} </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!---- End Ingredients Section ---->
+
+    <div class="nutritionFacts container">
+        <div class="row">
+            <div class="col-md-12">
+                <label for="nutritionInfo">Nutrition Info</label>
+                <p> {{ recipe.nutritionInfo }} </p>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" (click)="navigate()"><i class="fas fa-chevron-left"></i> Back </button>
+
+    </div>
+
+</div>

@@ -1,8 +1,43 @@
-.header-right_container,
-.header-left_container{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Redressed&family=The+Nautigal&display=swap');
+
+.header__wrapper{
+    background-color: cornflowerblue;
+    padding-top: 10px;
+}
+
+.navbar-brand .logo{
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.navbar-brand p{
+    font-family: 'The Nautigal', cursive;
+    font-size: 30px;
+    letter-spacing: 0.3rem;
+}
+
+.navbar-brand__container{
+    /* background-color: burlywood; */
+    height: 100%;
+}
+
+.navbar-brand {
+    height: 100%;
+}
+
+.navbar-brand img{
+    height: 100%;
     width: 100%;
 }
+
+.auth-actions__container{
+    margin: auto 20px;
+}
+
 .search_container{
-    width:50%;
-    height: 50%;
+    background-color: cadetblue;
+    width: 50%;
+}
+.navbar-nav .input-group{
+    width: 50%;
 }

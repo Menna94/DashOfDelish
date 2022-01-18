@@ -1,7 +1,7 @@
 <div class="header__wrapper">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="header-right_container navbar-collapse collapse order-1 order-md-0 dual-collapse2">
-            <ul class="navbar-nav mr-auto">
+    <nav class="navbar navbar-expand-md row">
+        <div class="col-md-4">
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" routerLink="./" routerLinkActive="active">Home</a>
                 </li>
@@ -9,38 +9,43 @@
                     <a class="nav-link" routerLinkActive="active">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['recipes','recipe-create']" routerLinkActive="active" *ngIf="userIsAuth">Create Recipe</a>
+                    <a class="nav-link" [routerLink]="['recipes','recipe-create']" routerLinkActive="active"
+                        *ngIf="userIsAuth">Create Recipe</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  routerLinkActive="active">Link</a>
+                    <a class="nav-link" routerLinkActive="active">Link</a>
                 </li>
             </ul>
         </div>
-
-
-        <div class="mx-auto order-0">
-            <a class="navbar-brand mx-auto">Dash of Delish</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <div class="col-md-4">
+            <div class="navbar-brand__container">
+                <div class="navbar-brand">
+                    <h2 class="logo">Dash of Delish</h2>
+                    <p> explore your inner chief </p>
+                </div>
+            </div>
         </div>
+        <div class="col-md-4">
+            <ul class="navbar-nav justify-content-end">
 
-
-        <div class="header-left_container navbar-collapse collapse order-3 dual-collapse2">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/auth" routerLinkActive="active" *ngIf="!userIsAuth">Sign-up/Login</a>
-                </li>
-                <li class="nav-item" *ngIf="userIsAuth">
-                    <button class="btn-primary" (click)="onLogout()">Logout</button>
-                </li>
-
-                <div class="search_container input-group flex-nowrap">
+                <div class="search__container input-group flex-nowrap">
                     <input type="text" class="form-control" placeholder="Search" aria-describedby="addon-wrapping">
                     <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
                 </div>
+
+                <div class="auth-actions__container">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/auth" routerLinkActive="active"
+                            *ngIf="!userIsAuth">Sign-up/Login</a>
+                    </li>
+                    <li class="nav-item" *ngIf="userIsAuth">
+                        <button class="btn btn-primary" (click)="onLogout()">Logout</button>
+                    </li>
+                </div>
+
             </ul>
         </div>
+
     </nav>
-     
+
 </div>

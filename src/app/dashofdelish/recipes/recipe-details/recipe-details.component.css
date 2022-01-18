@@ -1,0 +1,128 @@
+label{
+    font-size: 16px;
+    margin: 10px 0px;
+    font-weight: bold;
+}
+
+p{
+    margin-left: 10px;
+}
+.recipe-details__wrapper{
+    margin-top: 300px
+}
+/*---- INTRO ----*/
+.introForm{
+    margin: 200px auto;
+}
+.introForm label{
+    display: inline-block;
+}
+.introForm input{
+    display: inline-block;
+}
+
+.img-uploader{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    /* background-color: transparent; */
+    background-color: black;
+    opacity: .5;
+    z-index: 1;
+}
+
+.img-uploader .img-uploader-button{
+    text-align: center;
+    background-color:white;
+    width: max-content;
+    /* position: relative; */
+
+
+}
+.img-uploader-button button{
+    color: black !important;
+    z-index: 10;
+}
+.img-uploader-button input[type="file"]{
+    display: none;
+
+}
+.img-preview{
+    height: 100%;
+    background-color: blueviolet;
+    /* position: absolute; */
+    opacity: 1;
+    z-index: 2;
+}
+.img-preview img{
+    height: 100%;
+    /* width: 100%; */
+}
+
+/*---- END INTRO ----*/
+
+
+
+/*---- DETAILS ----*/
+.recipe-details__container{
+    background-color: blueviolet;
+    margin: 200px auto;
+    height: max-content;
+
+}
+
+.recipe-description__container{
+    background-color: azure;
+    margin: 40px auto;
+}
+
+
+.recipe-specifications_container{
+    background-color: aqua;
+    height: 100%;
+}
+.recipe-specifications_header{
+    text-align: center;
+font-size: 20px;
+}
+.nutrition-facts-pointer{
+    margin: 10px auto;
+}
+/*---- END DETAILS ----*/
+
+
+
+/*---- INGREDIENTS ----*/
+.recipe__container{
+    text-align: center;
+    margin: 50px auto;
+    margin: 100px auto;
+}
+
+.recipe__container .col-md-7{
+    background-color: burlywood;
+
+}
+
+.recipe__container .col-md-4{
+    background-color: rgb(135, 222, 179);
+
+}
+
+.ingredients__header{
+    margin: 20px auto;
+}
+/*---- END INGREDIENTS ----*/
+
+
+
+/*---- DIRECTIONS ----*/
+.directions__container{
+    margin: 100px auto;
+    background-color: cadetblue;
+}
+/*---- END DIRECTIONS ----*/
+
+

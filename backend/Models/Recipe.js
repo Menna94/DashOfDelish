@@ -4,24 +4,37 @@ const mongoose = require('mongoose');
 const ingredientsSubSchema = new mongoose.Schema({
     name:{
         type:String,
-        // required: true
+        required: true
     },
     amount: {
         type:Number,
-        // required: true
+        required: true
     }
 })
 
+const directionsSubSchema = new mongoose.Schema({
+    stepTitle:{
+        type:String
+    },
+    step: {
+        type:Number,
+        required: true
+    },
+    stepDetails:{
+        type:String,
+        required: true
+    }
+})
 
 const recipeSchema = new mongoose.Schema({
     recipeName: {
         type:String,
         required: true
     },
-    recipeImg:{
-        type:String,
-        // required: true
-    },
+    // recipeImg:{
+    //     type:String,
+    //     // required: true
+    // },
 
     servings: {
         type:Number,
@@ -40,11 +53,24 @@ const recipeSchema = new mongoose.Schema({
     
     history: String,
     nutritionInfo:String,
-    ingredients: [ingredientsSubSchema],
-    // steps: {
-    //     type:String,
-    //     required: true
-    // },
+    ingredients: {
+        type: [ingredientsSubSchema], 
+        required: true
+    },
+    directions: {
+        type: [directionsSubSchema], 
+        required: true
+    },
+    avgRating: {
+        type:Number,
+        min:[0.5, 'Rate With At Least 0.5 Star'],
+        max: [5, 'Maximum Rate is 5 Stars']
+    },
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'User',
+        required: true
+    }
 },{
     timestamps:true
 })

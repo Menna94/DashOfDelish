@@ -1,5 +1,8 @@
 const Recipe = require("../Models/Recipe")
 const multer = require('multer');
+const uuid = require('uuid');
+const User = require("../Models/User");
+const mongoose = require('mongoose');
 
 //multer configs
 const MINME_TYPE_MAP = {
@@ -87,13 +90,16 @@ exports.getRecipes = async (req,res,next) =>{
     
 }
 
+
+
 //@desc     Create A Recipe
 //@route    POST /api/recipes
 //@access   private/@user
 exports.createRecipe = async (req,res,next) =>{
     try{
         const url = `${req.protocol}://${req.get('host')}`; 
-
+        const user = req.user.id
+        
         const {
             servings, 
             prepTime,
@@ -101,37 +107,56 @@ exports.createRecipe = async (req,res,next) =>{
             totalTiming, 
             recipeName, 
             briefIntro,
+            // recipeImg,
             history,
             nutritionInfo,
-            ingredients
+            ingredients,
+            directions
         } = req.body;
 
-        const recipe = await new Recipe({
+        const recipe = new Recipe({
             servings,
             prepTime,
             cookingTime,
             totalTiming,
             recipeName,
             briefIntro,
-            recipeImg:`${url}/images/${req.file.filename}`,
+            // recipeImg:`${url}/images/${recipeImg}`,
             history,
             nutritionInfo,
-            ingredients
+            ingredients,
+            directions,
+            user
         })
-        recipe.save();
+        await recipe.save();
+        
 
         if(!recipe){
-            res.status(400).send({
+            return res.status(400).send({
                 success:false,
                 messgae: 'Error Creating the Recipe!',
                 data: null
             })
         }
+
+        // const newRole = await User.findByIdAndUpdate(user,
+        //     {
+        //         role:'publisher'
+        //     },
+        //     {
+        //         new:true,
+        //         runValidators:true
+        //     }
+        // )
+        
+
         res.status(201).send({
             success:true,
             messgae: 'Recipe Created Successfully!',
             data: recipe,
             recipeId : recipe._id,
+            user,
+            // newRole
         })
     }
     catch(err){
@@ -154,13 +179,23 @@ exports.updateRecipe = async (req,res,next)=>{
         let recipe = await Recipe.findById(id);
 
         if(!recipe){
-            res.status(404).send({
+            return res.status(404).send({
                 success:false,
                 messgae: 'The Recipe is Not Found!',
                 data: null
             })   
         }
 
+
+
+        if(req.user.id !== recipe.user.toString()){
+            return res.status(401).send({
+                success:false,
+                messgae: 'This User Is Not Authorized To Perform Updating On This Object!',
+                data: null
+            })   
+        }
+        
         recipe = await Recipe.findByIdAndUpdate(id, req.body,{
             new:true,
             runValidators:true
@@ -194,15 +229,26 @@ exports.updateRecipe = async (req,res,next)=>{
 //@access   private/@publisher
 exports.delRecipe = async (req,res,next)=>{
     try{
+        const recipe = await Recipe.findById(req.params.id);
+
+        if(req.user.id !== recipe.user.toString()){
+            return res.status(401).send({
+                success:false,
+                messgae: 'This User Is Not Authorized To Perform Deleting On This Object!',
+                data: null
+            })   
+        }
+
         const recipeDeleted = await Recipe.deleteOne({_id: req.params.id});
 
         if(!recipeDeleted){
-            res.status(400).send({
+            return res.status(400).send({
                 success:false,
                 messgae: 'Server Error In Deleting Recipe!',
                 data: err.message
             })
         }
+
         res.status(200).send({
             success:true,
             messgae: 'Recipe Deleted Successfully!',

@@ -1,8 +1,11 @@
 .recipes-list__wrapper{
-    margin: 100px auto
+    background-color: rgb(135, 222, 147);
+    height: 100%;
+    padding: 5% 0;
 }
 .card__container{
-    height: 200px;
+    /* height: 200px; */
+    background-color: blueviolet;
     /* justify-content: left !important; */
 }
 .card{
@@ -25,6 +28,7 @@
     text-overflow: ellipsis;
 }
 .card-text__container{
+    /* background-color: blueviolet; */
     height: 80%;
     font-size: 14px;
 }
@@ -36,7 +40,15 @@
 
 
 .card-footer{
-    text-align: center;
+    font-size: 14px;
+}
+
+.card-footer p{
+    display: inline-block;
+}
+
+.card-footer p:last-of-type{
+    text-align: right;
 }
 
 .card-footer .fas {
@@ -61,3 +73,9 @@
     transform: rotate(360deg);
     box-shadow: 2px 2px 24px #fff;
 }
+
+/* 
+ */
+ .rate_container i{
+     color: gold;
+ }

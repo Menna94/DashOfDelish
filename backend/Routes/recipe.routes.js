@@ -9,7 +9,7 @@ const {
     storage
 } 
 = require('../Controllers/recipe.controller')
-const auth = require('../Middlewares/auth.middleware');
+const { protect, authRoles }  = require('../Middlewares/auth.middleware');
 const multer = require('multer');
 
 //Fetch All Recipes
@@ -22,15 +22,16 @@ router.get('/:id', getSingleRecipe);
 
 //Create A Recipe
 //POST /api/recipes
-router.post('/', auth, multer({storage:storage}).single("recipeImg"), createRecipe);
+// , multer({storage:storage}).single("recipeImg")
+router.post('/', protect, createRecipe);
 
 //Update A Recipe
 //PUT /api/recipes/:id
-router.put('/:id', auth, updateRecipe)
+router.put('/:id', protect, updateRecipe)
 
 //Delete A Recipe
 //Delete /api/recipes/:id
-router.delete('/:id', auth, delRecipe)
+router.delete('/:id', protect, delRecipe)
 
 
 

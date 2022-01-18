@@ -9,7 +9,7 @@ const app = express();
 //Routes
 const RecipeRoutes = require('./Routes/recipe.routes');
 const AuthRoutes= require('./Routes/auth.routes');
-
+const UserRoutes = require('./Routes/user.routes');
 
 //DATABASE
 const dbConnection = require('./config/db');
@@ -34,8 +34,17 @@ app.use((req,res,next)=>{
     next()
 })
 
+
+
 //mount routers
-app.use("/api/recipes", RecipeRoutes)
-app.use("/api/auth", AuthRoutes)
+app.use("/api/recipes", RecipeRoutes);
+app.use("/api/auth", AuthRoutes);
+app.use("/api/users", UserRoutes);
+
+//AWS
+// (require('./Controllers/aws-s3.handler'))(app);
+
+// app.use('/', awsHandler);
+
 
 module.exports = app;

@@ -1,4 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
-.container{
-    margin: 20px auto;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Redressed&display=swap');
+
+body{
+    width: 100%;
+}
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+section{
+    margin: 100px auto
+}
+
+section:first-of-type{
+    margin-top: 0;
+}
+
+section:last-of-type{
+    margin-bottom: 0;
 }

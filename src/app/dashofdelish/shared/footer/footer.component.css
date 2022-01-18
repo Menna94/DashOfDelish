@@ -1,0 +1,73 @@
+.footer__wrapper {
+  background-color: darkgoldenrod;
+  height: 400px;
+  /* position: absolute; */
+}
+
+.footer__wrapper .container {
+  height: 100%;
+  padding: 15px 0px;
+
+}
+
+.footer__wrapper .footer-header {
+  text-align: center;
+}
+
+.footer__wrapper .footer-header h2{
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+
+.footer__content {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.footer-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.sponsors .footer-title {
+  margin: 25% auto;
+}
+/* links */
+.links {
+  text-align: left;
+}
+
+.s-media p {
+  font-size: 14px;
+}
+
+.links .content ul {
+  list-style: none;
+}
+
+/* social-media */
+.fab {
+  color: rgb(20, 18, 18);
+  padding: 10px;
+  width: 40px;
+  text-align: center;
+  text-decoration: none;
+  margin: 1px 5px 5px;
+  border-radius: 50%;
+  border: 2px double white;
+  transition: all 0.6s;
+}
+.fab:hover {
+  background-color: #333;
+  border: 2px double #333;
+  opacity: 0.9;
+  transform: rotate(360deg);
+  box-shadow: 2px 2px 24px #fff;
+}
+
+/* Global Communities*/
+.g-communitites {
+  border: 2px solid #d24d57;
+  margin: 10px auto;
+}

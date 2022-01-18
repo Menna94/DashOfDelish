@@ -5,49 +5,33 @@
             <div class="row">
                 <div class="col-md-7 ">
                     <!-- <div class="img__container"> -->
-                        <!-- Recipe Img -->
-                        <div class="img-uploader" [ngStyle]="{'opacity':(imgPreview)?1:.5, 'background-color': (imgPreview)?'transparent':'black'}">
-                            <div class="img-uploader-button">
-                                <button type="button" class="btn" (click)="filePicker.click()">
-                                    <i class="fas fa-upload"></i> Upload Image
-                                </button>
-                                <input type="file" #filePicker (change)="onImagePicked($event)">
-                            </div>
-                            <div class="img-preview"
+                    <!-- Recipe Img -->
+                    <!-- <div class="img-uploader"
+                        [ngStyle]="{'opacity':(imgPreview)?1:.5, 'background-color': (imgPreview)?'transparent':'black'}">
+                        <div class="img-uploader-button">
+                            <button type="button" class="btn" (click)="filePicker.click()">
+                                <i class="fas fa-upload"></i> Upload Image
+                            </button>
+                            <input type="file" #filePicker (change)="onImagePicked($event)">
+                        </div>
+                        <div class="img-preview"
                             *ngIf="imgPreview !== '' && imgPreview && recipeForm.get('recipeImg').valid">
                             <img [src]="imgPreview" [alt]="recipeForm.value.recipeName">
                         </div>
-                        </div>
-                        
+                    </div> -->
+
                     <!-- </div> -->
                 </div>
 
                 <div class="col-md-4 offset-1">
                     <!-- Recipe Name -->
-                    <div class="mb-3">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="recipeName" formControlName="recipeName"
+                            placeholder="Orange Cake">
                         <label for="recipeName" class="form-label">Recipe Name</label>
-                        <input type="text" class="form-control" id="recipeName" formControlName="recipeName">
+
                         <p class="form-text">Tips: Make it descriptive, captivating and accurate</p>
                         <!-- <p *ngIf="recipeName.invalid && (recipeName.touched || recipeName.dirty)"> Please Add a Name to Your Recipe </p> -->
-                    </div>
-
-                    <!-- user Name -->
-                    <div class="mb-3" *ngIf="!editMode">
-                        <label for="userName" class="form-label">By</label>
-                        <input type="text" class="form-control" id="userName">
-                        <p class="form-text">Tips: Make it descriptive, captivating and accurate</p>
-                        <!-- <p *ngIf="recipeName.invalid && (recipeName.touched || recipeName.dirty)"> Please Add a Name to Your Recipe </p> -->
-                    </div>
-
-                    <!-- Created At -->
-                    <div class="mb-3">
-                        <label for="createdAt" class="form-label">Created at</label>
-                        <input type="text" class="form-control" id="createdAt" [value]="date | date:'MMMM dd,yyyy'" readonly> 
-                    </div>
-
-                    <!-- Rate -->
-                    <div class="mb-3" *ngIf="!editMode">
-                        <p>Rate: </p> <i class="fas fa-star"></i>
                     </div>
                 </div>
             </div>
@@ -60,10 +44,11 @@
                         <!-- Recipe Details Section -->
                         <div class="recipe-description__container">
                             <!-- Recipe Short Description -->
-                            <div class="mb-3">
-                                <label for="recipeShortDescription" class="form-label">Brief Intro</label>
+                            <div class="mb-3 form-floating">
                                 <input type="text" class="form-control" id="recipeShortDescription"
                                     placeholder="max 100 words " formControlName="briefIntro" />
+                                <label for="recipeShortDescription" class="form-label">Brief Intro</label>
+
                                 <p class="form-text">
                                     Tips: short detailed description of why you think everyone
                                     should try it
@@ -72,10 +57,10 @@
                             </div>
 
                             <!-- Recipe Brief History -->
-                            <div class="mb-3">
-                                <label for="recipeHistory">Recipe History</label>
+                            <div class="mb-3 form-floating">
                                 <textarea class="form-control" placeholder="Optional: background, culture, ...etc"
-                                    id="recipeHistory" rows="10" formControlName="history"></textarea>
+                                    id="recipeHistory" formControlName="history"></textarea>
+                                <label for="recipeHistory">Recipe History</label>
                             </div>
                         </div>
                     </div>
@@ -84,28 +69,33 @@
                     <div class="col-md-4">
                         <div class="mb-3" class="recipe-specifications_container">
                             <div class="mb-3">Recipe Specifications</div>
-                            <table class="table">
-                                <tr>
-                                    <td>Prep Time</td>
-                                    <td><input type="text" id="prepTime" class="form-control"
-                                            formControlName="prepTime" /></td>
-                                </tr>
-                                <tr>
-                                    <td>Cooking Time</td>
-                                    <td><input type="text" id="cookingTime" class="form-control"
-                                            formControlName="cookingTime" /></td>
-                                </tr>
-                                <tr>
-                                    <td>Total</td>
-                                    <td><input type="text" id="totalTiming" class="form-control"
-                                            formControlName="totalTiming" /></td>
-                                </tr>
-                                <tr>
-                                    <td>Servings</td>
-                                    <td><input type="text" class="form-control" formControlName="servings"
-                                            id="servings" /></td>
-                                </tr>
-                            </table>
+                            <div>
+                                <div class="mb-3 form-floating">
+                                    <input type="text" class="form-control" id="prepTime" placeholder="prepTime"
+                                        formControlName="prepTime" />
+                                    <label for="prepTime" class="form-label">Preparation Time</label>
+                                </div>
+
+                                <div class="mb-3 form-floating">
+                                    <input type="text" class="form-control" id="cookingTime" placeholder="cookingTime"
+                                        formControlName="cookingTime" />
+                                    <label for="cookingTime" class="form-label">Cooking Time</label>
+                                </div>
+
+                                <div class="mb-3 form-floating">
+                                    <input type="text" class="form-control" id="totalTiming" placeholder="totalTiming"
+                                        formControlName="totalTiming" />
+                                    <label for="totalTiming" class="form-label">Total Timing</label>
+                                </div>
+
+                                <div class="mb-3 form-floating">
+                                    <input type="text" class="form-control" id="servings" placeholder="servings"
+                                        formControlName="servings" />
+                                    <label for="servings" class="form-label">Servings</label>
+                                </div>
+                            </div>
+
+
                             <div class="nutrition-facts-pointer text-center">
                                 <a pageScroll href="#nutritionInfo">Nutrition Facts</a>
                             </div>
@@ -124,12 +114,23 @@
                 </div>
                 <div class="row ingredients__contents">
                     <div class="col-md-12" formArrayName="ingredients">
-                        <div class="row mb-3" *ngFor="let ingredient of ingredControl; let i=index;" [formGroupName]="i">
+                        <div class="row mb-3" *ngFor="let ingredient of ingredControl; let i=index;"
+                            [formGroupName]="i">
+
                             <div class="col-xs-8 col-md-8">
-                                <input type="text" class="form-control" placeholder="Ingredient" formControlName="name">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="ingredient" placeholder="Ingredient"
+                                        formControlName="name">
+                                    <label for="ingredient"> Name </label>
+                                </div>
                             </div>
+
                             <div class="col-xs-2 col-md-3">
-                                <input type="text" class="form-control" placeholder="Amount" formControlName="amount">
+                                <div class="mb-3 form-floating">
+                                    <input type="text" class="form-control" id="amount" placeholder="Amount"
+                                        formControlName="amount">
+                                    <label for="amount"> Amount </label>
+                                </div>
                             </div>
                             <div class="col-xs-1 col-md-1">
                                 <button class="btn btn-danger">
@@ -140,7 +141,7 @@
                     </div>
                 </div>
 
-                <div class="row mb-5">
+                <div class="row mb-2">
                     <div class="col-md-12">
                         <button class="btn btn-primary" type="button" (click)="onAddIngredient()"> Add Ingredient
                         </button>
@@ -156,29 +157,45 @@
                     <h3>Directions</h3>
                 </div>
                 <div class="row directions__contents justify-content-center">
-                    <div class="col-md-12 mt-5">
-                        <!--  *ngFor="let ingredientCtrl of controls; let i=index;" [formGroupName]="i" -->
-                        <div class="row mb-5">
-                            <div class="col-xs-4 col-md-4">
-                                <label for="step">Step </label>
-                                <input id="step" type="text" class="form-control">
+                    <div class="col-md-12 mt-5" formArrayName="directions">
+                        <div *ngFor="let step of directControl; let i=index;" [formGroupName]="i">
+                            <div class="row mb-5">
+                                <div class="col-xs-4 col-md-4">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="mb-3 form-floating">
+                                                <input id="step" type="text" class="form-control"
+                                                    placeholder="stepTitle" formControlName="stepTitle">
+                                                <label for="step"> Step </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 offset-2">
+                                            <input id="step" type="text" readonly class="form-control" formControlName="step" value="{{ i + 1 }}">{{i+ 1}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <div class="mb-3 form-floating">
+                                        <textarea id="stepDetails" placeholder="details" class="form-control"
+                                            formControlName="stepDetails">
+                                        </textarea>
+                                        <label for="stepDetails"> Step Details </label>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-2">
                             <div class="col-md-12">
-                                <label for="stepDetails"> Step Details </label>
-                                <textarea id="stepDetails" rows="3" class="form-control">
-                                </textarea>
-                            </div>
-                        </div>
-
-                        <div class="row mb-5">
-                            <div class="col-md-12">
-                                <button class="btn btn-primary" (click)="onAddStep()"> Add Step
+                                <button type="button" class="btn btn-primary" (click)="onAddStep()"> Add Step
                                 </button>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -187,8 +204,10 @@
             <div class="nutritionFacts container">
                 <div class="row">
                     <div class="col-md-12">
-                        <label for="nutritionInfo">Nutrition Info</label>
-                        <textarea id="nutritionInfo" rows="2" formControlName="nutritionInfo"></textarea>
+                        <div class="form-floating mb-5">
+                            <textarea id="nutritionInfo" class="form-control" placeholder="nutrition" formControlName="nutritionInfo"></textarea>
+                            <label for="nutritionInfo">Nutrition Info</label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -211,6 +230,9 @@
                             </button>
                         </div>
                     </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6"> <a href="#" class="btn btn-sm animated-button victoria-three">Register</a> </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6"> <a href="#" class="btn btn-sm animated-button victoria-three">Register</a> </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6"> <a href="#" class="btn btn-sm animated-button victoria-three">Register</a> </div>
                 </div>
             </div>
         </form>

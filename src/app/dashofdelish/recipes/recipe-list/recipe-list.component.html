@@ -1,4 +1,4 @@
-<div class="recipes-list__wrapper">
+<section class="recipes-list__wrapper">
     <div class="recipes-list__cotainer container">
 <!-- Recipes -->
         <div class="recipe-list" *ngIf="recipes.length > 0">
@@ -13,11 +13,18 @@
                         <div class="card-title__container">
                             <p class="card-title">{{ recipe.recipeName }}</p>
                         </div>
-                      <div class="card-text__container">
-                        <p class="card-text">{{ recipe.briefIntro}}</p>
-                            <a [routerLink]="['recipe', recipe.id]" > read more...</a>
+
+                        <div class="rate_container mb-3" *ngIf="!userIsAuth">
+                            <i class="fas fa-star"></i>
+                        </div>
+
+                        <div class="card-text__container">
+                            <p class="card-text">{{ recipe.briefIntro}}</p>
+                            <a [routerLink]="['recipes', recipe.id]" > explore ...</a>
+                            
+                        </div>
+
                         
-                      </div>
                     </div>
 
                         
@@ -26,9 +33,11 @@
                         <a class="fas fa-edit" [routerLink]="['recipes','recipe-update', recipe.id]" ></a>
                         <a class="fas fa-trash" (click)="onDelete(recipe.id)"></a> 
                     </div>
+                    
                     <div class="card-footer text-muted" *ngIf="!userIsAuth">
-                        2 days ago
-                      </div>
+                        <p class="text-left">By <span> @John Smith </span> </p> &nbsp; &nbsp;
+                        <p class="text-right"> {{ 1 || recipe.createdAt | date:'MMM,yyyy' }} </p> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,4 +47,4 @@
             <p class="text-center">No Recipes Found!</p>
         </div>
     </div>
-</div>
+</section>

@@ -22,6 +22,12 @@ const UserSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    role:{
+        type: String,
+        enum: ["user", "publisher", "admin"],
+        default: "user",
+        immutable: true
+    }
 });
 
 //Encrypt password using bcrypt
@@ -32,8 +38,8 @@ UserSchema.pre('save', async function(next){
 
 //sign JWT
 UserSchema.methods.getSignedJWT = function (){
-    return jwt.sign({id: this._id}, `process.env.JWT_SECRET`,{
-        expiresIn: `1d`
+    return jwt.sign({id: this._id}, process.env.JWT_SECRET,{
+        expiresIn: process.env.JWT_EXPIRES_IN
     })
 }
 

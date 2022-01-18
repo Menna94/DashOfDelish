@@ -1,0 +1,27 @@
+<div class="home-header__wrapper">
+    <!-- Banner -->
+    <div class="banner__container" [ngClass]="toggle ? 'active' : ''">
+        <header>
+            <h2 class="logo"> Dash Of Delish</h2>
+            <i class="toggle" (click)="addActiveClass()" [ngClass]="toggle ? 'active fas fa-times' : 'fas fa-bars'"></i>
+        </header>
+
+        <!-- <video src="./assets/dahsofdelish.mp4" muted="true" loop="true" autoplay="true"></video> -->
+    
+        <div class="overlay"></div>
+    
+        <div class="text">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis similique quo porro tempora aliquam qui, alias magnam natus autem eum.</p>
+            <a href="#">Explore</a>
+        </div>
+    </div>
+
+    <div class="menu" *ngIf="toggle">
+        <ul>
+            <li><a routerLink="./" routerLinkActive="active" >Home</a></li>
+            <li><a routerLink="./blog" routerLinkActive="active" >Blog</a></li>
+            <li><a routerLink="./contact-us" routerLinkActive="active" >Contact Us</a></li>
+            <li><a [routerLink]="['recipes','recipe-create']" routerLinkActive="active" >Create Your Own Recipe</a></li>
+        </ul>
+    </div>
+</div>
